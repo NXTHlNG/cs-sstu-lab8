@@ -71,6 +71,7 @@ namespace cs_sstu_lab8.Controllers
         }
 
         // GET: Products/Edit/5
+        [Authorize(Roles = UserRoles.Admin)]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.Product == null)
