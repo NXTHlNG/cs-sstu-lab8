@@ -1,0 +1,72 @@
+﻿@model IEnumerable<cs_sstu_lab8.Models.Order>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            @if (User.IsInRole("Admin"))
+            {
+                <th>
+                    @Html.DisplayNameFor(model => model.User.UserName)
+                </th>
+            }
+            <th>
+                Items
+            </th>
+            <th>
+                Total
+            </th>
+            @if (User.IsInRole("Admin"))
+            {
+                <th></th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    @Html.DisplayFor(modelItem => item.User.UserName)
+                </td>
+            }
+            <td>
+                <ul style="list-style-type:none">
+                    @foreach (var modelItem in item.Items)
+                    {
+                        <li>
+                            <div class="alert alert-info" role="alert">
+                                <span class="badge bg-success">@modelItem.Amount</span> [@modelItem.Price.ToString("c")] - @modelItem.Product.Name
+                            </div>
+                        </li>
+                    }
+                </ul>
+            </td>
+            <td>
+                @item.Items.Select(m => m.Product.Price * m.Amount).Sum().ToString("c")
+            </td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            }
+        </tr>
+}
+    </tbody>
+</table>
