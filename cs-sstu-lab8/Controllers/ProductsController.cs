@@ -59,7 +59,7 @@ namespace cs_sstu_lab8.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = UserRoles.Admin)]
-        public async Task<IActionResult> Create([Bind("Id,Name,Quantity,Price")] Product product)
+        public async Task<IActionResult> Create([Bind("Id,Name,Quantity,Price,PictureUrl")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -92,7 +92,7 @@ namespace cs_sstu_lab8.Controllers
         [Authorize(Roles = UserRoles.Admin)]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Quantity,Price")] Product product)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Quantity,Price,PictureUrl")] Product product)
         {
             if (id != product.Id)
             {

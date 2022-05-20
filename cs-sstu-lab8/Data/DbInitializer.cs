@@ -21,14 +21,16 @@ namespace cs_sstu_lab8.Data
                         {
                             Name = "Product 1",
                             Price = 121,
-                            Quantity = 20
-                           
+                            Quantity = 20,
+                            PictureUrl = "~/StaticFiles/images/1.jpg"
+
                         },
                         new Product()
                         {
                             Name = "Product 2",
                             Price = 123,
-                            Quantity = 10
+                            Quantity = 10,
+                            PictureUrl = "~/StaticFiles/images/2.jpg"
                         },
                     });
                     context.SaveChanges();

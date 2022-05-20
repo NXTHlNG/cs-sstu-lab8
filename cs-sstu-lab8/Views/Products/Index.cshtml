@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <img src="https://c.dns-shop.ru/thumb/st1/fit/500/500/d8f1b7be7a39aabcc262ec51b8fd8c06/7bef24832a1d164013b1491946c93c8e88cd0cbe0ac2d03bb2903a36aeb9bb57.jpg.webp" width="100%" alt="@item.Name">
+                        <img src=@item.PictureUrl width="100%" alt="@item.Name">
                     </div>
                     <div class="col-md-6">
                         <div class="card-body">
@@ -43,7 +43,7 @@
                                 <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id">
                                     <i class="bi bi-eye-fill"></i> Show Details
                                 </a>
-                                <a class="btn btn-success text-white" 
+                                <a class="btn btn-success text-white  @(item.Quantity <= 0 ? "disabled" : "")" 
                                    asp-controller="Cart" 
                                    asp-action="AddItem" 
                                    asp-route-id="@item.Id">

@@ -17,5 +17,8 @@ namespace cs_sstu_lab8.Models
         [Required]
         [Range(0, double.MaxValue)]
         public double Price { get; set; }
+
+        [Required]
+        public string PictureUrl { get; set; }
     }
 }
