@@ -40,7 +40,10 @@ namespace cs_sstu_lab8.Controllers
                 return NotFound();
             }
 
-            _cartService.AddItem(product);
+            if (product.IsAvailable)
+            {
+                _cartService.AddItem(product);
+            }
 
             return Redirect(Request.Headers["Referer"].ToString());
         }
@@ -91,7 +94,8 @@ namespace cs_sstu_lab8.Controllers
             var order = new Order
             {
                 UserId = user.Id,
-                Items = orderItems.ToList()
+                Items = orderItems.ToList(),
+                CreatedDate = DateTime.Now,
             };
 
             _context.Add(order);

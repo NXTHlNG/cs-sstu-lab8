@@ -48,6 +48,8 @@ namespace cs_sstu_lab8.Controllers
 
             var order = await _context.Order
                 .Include(o => o.User)
+                .Include(o => o.Items)
+                .ThenInclude(o => o.Product)
                 .FirstOrDefaultAsync(m => m.Id == id);
 
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);

@@ -20,5 +20,6 @@ namespace cs_sstu_lab8.Data
         public DbSet<cs_sstu_lab8.Models.Order>? Order { get; set; }
 
         public DbSet<cs_sstu_lab8.Models.OrderItem>? OrderItem { get; set; }
+
     }
 }

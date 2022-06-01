@@ -20,5 +20,7 @@ namespace cs_sstu_lab8.Models
 
         [Required]
         public string PictureUrl { get; set; }
+
+        public bool IsAvailable { get; set; } = true;
     }
 }

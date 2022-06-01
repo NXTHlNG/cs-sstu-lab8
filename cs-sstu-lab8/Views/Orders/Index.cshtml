@@ -19,11 +19,15 @@
                 </th>
             }
             <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
                 Items
             </th>
             <th>
                 Total
             </th>
+            <th></th>
             @if (User.IsInRole("Admin"))
             {
                 <th></th>
@@ -43,6 +47,9 @@
                 </td>
             }
             <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
                 <ul style="list-style-type:none">
                     @foreach (var modelItem in item.Items)
                     {
@@ -56,6 +63,9 @@
             </td>
             <td>
                 @item.Items.Select(m => m.Product.Price * m.Amount).Sum().ToString("c")
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a>
             </td>
             @if (User.IsInRole("Admin"))
             {

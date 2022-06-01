@@ -155,7 +155,7 @@ namespace cs_sstu_lab8.Controllers
             var product = await _context.Product.FindAsync(id);
             if (product != null)
             {
-                _context.Product.Remove(product);
+                product.IsAvailable = false;
             }
             
             await _context.SaveChangesAsync();

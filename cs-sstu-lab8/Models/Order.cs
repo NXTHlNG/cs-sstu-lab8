@@ -10,6 +10,8 @@ namespace cs_sstu_lab8.Models
 
         public string UserId { get; set; }
 
+        public DateTime CreatedDate { get; set; }
+
         [ForeignKey("UserId")]
         public ApplicationUser User { get; set; }
 

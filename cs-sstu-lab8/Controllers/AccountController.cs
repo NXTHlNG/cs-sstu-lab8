@@ -65,11 +65,19 @@ namespace cs_sstu_lab8.Controllers
                 return View(registerModel);
             }
 
+            var user1 = await _userManager.FindByEmailAsync(registerModel.EmailAddress);
+            if (user1 != null)
+            {
+                TempData["Error"] = "This phone number is already in use";
+                return View(registerModel);
+            }
+
             var newUser = new ApplicationUser()
             {
                 FullName = registerModel.FullName,
                 Email = registerModel.EmailAddress,
-                UserName = registerModel.EmailAddress
+                UserName = registerModel.EmailAddress,
+                PhoneNumber = registerModel.PhoneNumber,
             };
             var newUserResponse = await _userManager.CreateAsync(newUser, registerModel.Password);
 
